@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/braves-project",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/braves-project/index.html"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+@import '~src/styles.scss';
+
+.title {
+  padding-bottom: 10px;
+}
+
+.container {
+  width: 300px; 
+  height: 160px; 
+  display: grid; 
+  grid-template-rows: 45px;
+  text-align: center;
+}
+
+.video-container {
+  display: block;
+  margin-left: 10px;
+}
+
+.button-area {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px; 
+  height: 50px; 
+  display: grid; 
+}
+
+.close-button {
+  background-color: #13274F;
+  color: white;
+  // color: #13274F
+}

@@ -1,0 +1,117 @@
+<div class="content-container">
+
+  <!-- filter container -->
+  <div class="filter-container" *ngIf="!isLoading && filterForm"> 
+
+    <div class="button-area">
+      <span class="header" style="margin-bottom: 5px;"> Filter Options </span>
+      <form [formGroup]="filterForm" autocomplete="off">
+        
+        <!-- Batter Id Lookup -->
+        <mat-form-field appearance="outline">
+          <mat-label>Batter Id</mat-label>
+          <input matInput formControlName="batterId"/>
+        </mat-form-field>
+
+        <!-- Pitcher Id Lookup -->
+        <mat-form-field appearance="outline">
+          <mat-label>Pitcher Id</mat-label>
+          <input  matInput formControlName="pitcherId"/>
+        </mat-form-field>
+
+        <!-- Outcome Options -->
+        <mat-form-field  appearance="outline" floatLabel="always">
+          <mat-label>Event Outcome</mat-label>
+          <mat-select formControlName="outcome">
+            <mat-option value="Out">Out</mat-option>
+            <mat-option value="Single">Single</mat-option>
+            <mat-option value="Double">Double</mat-option>
+            <mat-option value="Triple">Triple</mat-option>
+            <mat-option value="HomeRun">HomeRun</mat-option>
+            <mat-option value="Undefined">Undefined</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+
+      <button class="filter-button" mat-button (click)="submitForm()">Filter</button>
+      <button class="filter-entry" mat-button (click)="clearForm()">Clear</button>
+    </div>
+    <div class="subheader-container">
+      <span class="header" style="margin-bottom: 5px;"> Additional Features </span>
+      <span class="subheader" style="margin-right: 10px"> 1) Click row to play video</span>
+      <span class="subheader"> 2) Click row headers to sort results</span>
+    </div>
+  </div>
+
+  <!-- table container-->
+  <div class="space"> 
+    <div class="table-container">
+
+      <span class="header"> Batted Ball Data </span>
+
+      <div class="data-container">
+        <table class="bb-table" mat-table [dataSource]="dataSource" matSort fixed-column-table >
+
+          <ng-container matColumnDef = "game_date">
+            <th class="med-cell" mat-header-cell *matHeaderCellDef> Game Date </th>
+            <td mat-cell *matCellDef = "let i"> {{ i.game_date }}  </td>
+          </ng-container>
+
+          <ng-container  matColumnDef = "batter_id">
+            <th class="med-cell" mat-header-cell *matHeaderCellDef mat-sort-header> Batter ID </th>
+            <td mat-cell *matCellDef = "let i"> {{ i.batter_id}} </td>
+          </ng-container>
+
+          <ng-container  matColumnDef = "batter">
+            <th class="long-cell" mat-header-cell *matHeaderCellDef mat-sort-header> Batter </th>
+            <td mat-cell *matCellDef = "let i"> {{ i.batter}} </td>
+          </ng-container>
+
+          <ng-container  matColumnDef = "pitcher_id">
+            <th class="med-cell" mat-header-cell *matHeaderCellDef mat-sort-header> Pitcher ID </th>
+            <td mat-cell *matCellDef = "let i"> {{ i.pitcher_id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef = "pitcher">
+            <th class="long-cell" mat-header-cell *matHeaderCellDef mat-sort-header> Pitcher </th>
+            <td mat-cell *matCellDef = "let i"> {{ i.pitcher }} </td>
+          </ng-container>
+
+          <ng-container  matColumnDef = "launch_angel">
+            <th class="short-cell" mat-header-cell *matHeaderCellDef mat-sort-header> LA (deg)</th>
+            <td mat-cell *matCellDef = "let i"> {{ i.launch_angel.toFixed(1) }} </td>
+          </ng-container>
+
+          <ng-container  matColumnDef = "exit_speed">
+            <th class="short-cell" mat-header-cell *matHeaderCellDef mat-sort-header> EV (mph) </th>
+            <td mat-cell *matCellDef = "let i"> {{ i.exit_speed.toFixed(1) }}  </td>
+          </ng-container>
+
+          <ng-container  matColumnDef = "hit_distance">
+            <th class="short-cell" mat-header-cell *matHeaderCellDef mat-sort-header> Distance (ft)</th>
+            <td mat-cell *matCellDef = "let i"> {{ i.hit_distance.toFixed(0) }}  </td>
+          </ng-container>
+
+          <ng-container  matColumnDef = "play_outcome">
+            <th class="med-cell" mat-header-cell *matHeaderCellDef mat-sort-header> Outcome </th>
+            <td mat-cell *matCellDef = "let i"> {{ i.play_outcome }}  </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef = "displayedColumns;"></tr>
+          <tr mat-row (click)="openVideoModal(row)" *matRowDef = "let row; columns: displayedColumns;" class="hover-row"></tr>
+        </table>
+      </div>
+      <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" [pageSize]="pageSize"
+          showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>
+
+  <div class="loading" *ngIf="isLoading"> 
+    <h3> Loading... </h3>
+  </div>
+</div>
+
+<div *ngIf="isError"> 
+  <app-error></app-error>
+</div>

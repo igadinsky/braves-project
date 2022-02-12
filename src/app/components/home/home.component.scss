@@ -1,0 +1,116 @@
+@import '~src/styles.scss';
+
+.content-container {
+  display: grid;
+  grid-template-columns: 275px calc(100% - 275px);
+}
+
+.filter-container {
+  width: 250px;
+  height: calc(100vh - 36px);
+  position: relative;
+  background-color: white;
+  border: solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-entry {
+  border: 2px solid black;
+  width: 150px
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #13274F!important;
+  opacity: 1!important;
+}
+
+.filter-button {
+  background-color: #13274F;
+  color: white;
+  margin-bottom: 10px;
+  border: 2px solid black;
+  width: 150px
+}
+
+.button-area {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px; 
+  height: 425px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;
+  border-bottom: 1px solid;
+}
+
+.mat-row:hover {
+  background-color: #E8EAF6;
+  cursor: pointer;
+}
+
+.subheader-container {
+  display: flex;
+  margin: 5px;
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+.space {
+  display: flex;
+  justify-content: center;
+}
+
+.table-container {
+  background-color: white;
+  resize: both;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid;
+  border-radius: 5px;
+  position: absolute;
+  margin-top: 10px;
+}
+
+.data-container {
+  height: 540px;
+  max-width: 100%;
+  overflow: auto;
+  border-top: solid 1px;
+}
+
+.bb-table {
+  width: 100%;
+  border-top: solid 1px;
+
+  th {
+    font-size: 15px;
+    background: rgb(222, 222, 222);
+    font-weight: bold;
+    border-bottom: solid 1px;
+  }
+
+  td {
+    font-size: 14px;
+  }
+}
+
+.long-cell {
+  width: 175px;
+}
+
+.med-cell {
+  width: 100px;
+}
+
+.short-cell {
+  width: 65px;
+}
+
+
+
+
+

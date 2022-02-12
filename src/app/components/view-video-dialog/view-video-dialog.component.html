@@ -1,0 +1,24 @@
+
+<div class="container">
+
+  <span class="header"> {{date}}:  {{batter}}  -  {{outcome}}</span>
+  <div class="video-container" *ngIf="url">
+    <iframe
+      width="730"
+      height="410"
+      alt="Event video"
+      [src]="url | safe"
+      allowfullscreen
+      allow="autoplay"
+    >
+    </iframe>
+  </div>
+
+  <div *ngIf="!url">
+    <span>{{ message }}</span>
+  </div>
+
+  <div *ngIf="url || !url"class="button-area">
+    <button class="close-button" mat-button (click)="close()">Close</button>
+  </div>
+</div>
