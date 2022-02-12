@@ -1,13 +1,16 @@
 # Braves Project
 
-Hello Braves Dev Team! This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.1. Some of these files were auto-generated. Follow the instructions below to run the application
+Hello Braves Dev Team! This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.1. Some of these files were auto-generated. Follow the instructions below to run the application. I have deployed the application [here](https://braves-project.firebaseapp.com/) if there are troubles running the app.
 
 ## Node Version
 This application runs on node version v16.10.0. Use `nvm use v16.10.0` to set correct version. You may need to install this version if it has not been previously installed.
 
 ## Navigate to folder
 
-Navigate inside the `/braves-project` directory and continue with the following step
+Navigate inside the `/braves-project` directory and continue with the following steps
+
+## Development server
+run `npm install` in order to ensure all dependencies are downloaded
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
